@@ -1,4 +1,5 @@
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { updateArchived, deleteOneNews } from '../../../../features/news/newsSlice'
 
 function OneNews({_id, title, category, updatedAt, archived}) {
@@ -15,7 +16,9 @@ function OneNews({_id, title, category, updatedAt, archived}) {
 
   return (
     <>
+    <Link to={`/newsdetail/${_id}`}>
     <div>Título: {title}</div>
+    </Link>
     <div>Categoría: {category}</div>
     <div>Fecha: {updatedAt}</div>
     {archived ? <button onClick={() => deleteNews(_id)}>Delete</button> : <button onClick={() => archiveNews(_id)}>Archive</button>}

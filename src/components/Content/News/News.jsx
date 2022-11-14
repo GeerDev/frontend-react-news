@@ -1,6 +1,7 @@
-import { useEffect} from 'react'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getNews } from '../../features/news/newsSlice.js'
+import { useLocation } from 'react-router-dom';
+import { getNews } from '../../../features/news/newsSlice.js'
 import OneNews from './OneNews/OneNews'
 
 function News({ archived }) {
@@ -8,9 +9,12 @@ function News({ archived }) {
 const dispatch = useDispatch()
 const { news } = useSelector( state => state.news )
 
+let location = useLocation()
+let changeLocation = location.pathname
+
 useEffect(() => {
   dispatch(getNews())
-},[])
+},[changeLocation])
 
   return (
     <div>

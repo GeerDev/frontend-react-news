@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Home from './components/Home/Home';
 import Header from './components/Header/Header'
-import News from './components/News/News'
+import Content from './components/Content/Content';
 import './App.css';
 
 function App() {
@@ -13,8 +13,8 @@ function App() {
               <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/home" element={<Home />} />
-                  <Route path="/news" element={<News archived = { false }/>} />
-                  <Route path="/archived" element={<News archived = { true }/>} />
+                  <Route path="/news" element={<Content archived = { false }/>} />
+                  <Route path="/archived" element={<Content archived = { true }/>} />
               </Routes>
               </div>
     </div>

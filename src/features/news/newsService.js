@@ -12,9 +12,15 @@ const updateArchived = async (id_new) => {
     return res.data.updateNews;
 };
 
+const deleteOneNews = async (id_new) => {
+    const res = await axios.delete(API_URL + `/id/${id_new}`);
+    return res.data.deleteNews;
+};
+
 const postService = {
   getNews,
-  updateArchived
+  updateArchived,
+  deleteOneNews
 };
 
 export default postService;

@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { updateArchived } from '../../../features/news/newsSlice'
+import { updateArchived, deleteOneNews } from '../../../features/news/newsSlice'
 
 function OneNews({_id, title, category, archived}) {
 
@@ -9,11 +9,15 @@ function OneNews({_id, title, category, archived}) {
     dispatch(updateArchived(id_new))
   }
 
+  const deleteNews = (id_new) => {
+    dispatch(deleteOneNews(id_new))
+  }
+
   return (
     <>
     <div>Título: {title}</div>
     <div>Categoría: {category}</div>
-    {archived ? <button>Delete</button> : <button onClick={() => archiveNews(_id)}>Archive</button>}
+    {archived ? <button onClick={() => deleteNews(_id)}>Delete</button> : <button onClick={() => archiveNews(_id)}>Archive</button>}
     </>
   )
 }

@@ -24,6 +24,9 @@ export const newsSlice = createSlice({
       })
       state.news = news
       })
+      .addCase(deleteOneNews.fulfilled, (state, action) => {
+        state.news = state.news.filter(oneNews => oneNews._id !== action.payload._id)
+      })
   }
 });
 
@@ -39,6 +42,15 @@ export const getNews = createAsyncThunk("news/getNews", async (thunkAPI) => {
 export const updateArchived = createAsyncThunk("news/updateArchived", async (id_new, thunkAPI) => {
     try {
       return await newsService.updateArchived(id_new);
+    } catch (error) {
+      const message = error.response.data;
+      return thunkAPI.rejectWithValue(message);
+    }
+  });
+
+export const deleteOneNews = createAsyncThunk("news/deleteOneNews", async (id_new, thunkAPI) => {
+    try {
+      return await newsService.deleteOneNews(id_new);
     } catch (error) {
       const message = error.response.data;
       return thunkAPI.rejectWithValue(message);

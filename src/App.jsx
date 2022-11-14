@@ -6,18 +6,19 @@ import './App.css';
 
 function App() {
   return (
+    <Router>
     <div className="App">
       <Header />
-        <Router>
               <div className="routes">
               <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/home" element={<Home />} />
                   <Route path="/news" element={<News />} />
+                  <Route path="/archived" element={<News archived = { true }/>} />
               </Routes>
               </div>
-        </Router>
     </div>
+    </Router>
   );
 }
 

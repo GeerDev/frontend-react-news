@@ -15,6 +15,15 @@ export const newsSlice = createSlice({
       .addCase(getNews.fulfilled, (state, action) => {
         state.news = action.payload;
       })
+      .addCase(updateArchived.fulfilled, (state, action) => {
+        const news = state.news.map((element) => {
+          if (element._id === action.payload._id) {
+            element = action.payload;
+          }
+          return element
+      })
+      state.news = news
+      })
   }
 });
 
@@ -26,5 +35,14 @@ export const getNews = createAsyncThunk("news/getNews", async (thunkAPI) => {
     return thunkAPI.rejectWithValue(message);
   }
 });
+
+export const updateArchived = createAsyncThunk("news/updateArchived", async (id_new, thunkAPI) => {
+    try {
+      return await newsService.updateArchived(id_new);
+    } catch (error) {
+      const message = error.response.data;
+      return thunkAPI.rejectWithValue(message);
+    }
+  });
 
 export default newsSlice.reducer;

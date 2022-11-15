@@ -10,22 +10,25 @@ const dispatch = useDispatch()
 const { news } = useSelector( state => state.news )
 
 let location = useLocation()
-let changeLocation = location.pathname
+let currentLocation = location.pathname
 
 useEffect(() => {
   dispatch(getNews())
-},[changeLocation])
+},[currentLocation])
+
+const newsArchived = news.filter(element => element.archived)
 
   return (
     <div>
     {
+      news.length === 0 ? <p>No news here yet...</p> : currentLocation === "/archived" && newsArchived.length === 0 ? <p>No news archived here yet...</p> :
       news.map(element => (
         element.archived === archived ?
         <OneNews 
             key= { element._id } 
             {...element}
             /> : null
-      ))
+      )) 
     }
     </div>
   )

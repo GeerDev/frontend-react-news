@@ -8,8 +8,10 @@ function Body({ archived }) {
 
   return (
     <main className='body-content'>
-    <AddNews />
-    <Sidebar />
+      <div className='addandsearch'>
+        <AddNews />
+        <Sidebar />
+      </div>
     <News archived = { archived }/>
     </main>
   )

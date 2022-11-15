@@ -2,13 +2,16 @@ import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Home from './components/Home/Home';
 import Navbar from './components/Navbar/NavBar'
+import Footer from './components/Footer/Footer';
 import Body from './components/Body/Body';
 import NewsDetail from './components/NewsDetail/NewsDetail';
 import "antd/dist/antd.css";
 
+
 function App() {
   return (
     <Router>
+      <div className='app'>
       <Navbar />
               <Routes>
                   <Route path="/" element={<Home />} />
@@ -17,6 +20,8 @@ function App() {
                   <Route path="/archived" element={<Body archived = { true }/>} />
                   <Route path="/newsdetail/:id" element={<NewsDetail />} />
               </Routes>
+      <Footer />
+      </div>
     </Router>
   );
 }

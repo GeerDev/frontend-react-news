@@ -34,11 +34,11 @@ Ejecutar el script para iniciar el proyecto:
 - Se pueden ver la lista de noticias una debajo de otra en vertical ordenadas por fecha de ingreso
 - Se puede archivar una noticia y mandarla a la zona de noticias archivadas
 - Se puede ver la lista de noticias archivadas
-- Si la noticia esta archivada se puede borrar de nuestra lista de archivas y de noticias totales
+- Si la noticia esta archivada se puede borrar de nuestra lista de noticias archivadas y de la lista de noticias totales
 - Se puede ver una noticia en detalle
 - Se puede crear una noticia nueva
 - Existen filtros por categorías y por título de noticia
-- Si la noticia contiene web externo, se puede visitar
+- Si la noticia contiene enlace externo, se puede visitar
 
 ## Interfaces de la aplicación 📟
 

@@ -5,7 +5,8 @@ const initialState = {
   news: [],
   oneNews: {},
   categories: [],
-  message: ""
+  message: "",
+  errorMessage: ""
 };
 
 export const newsSlice = createSlice({
@@ -36,6 +37,10 @@ export const newsSlice = createSlice({
       .addCase(createNews.fulfilled, (state, action) => {
         state.news = [action.payload.newNews, ...state.news]
         state.message = action.payload.info
+        state.errorMessage = ""
+      })
+      .addCase(createNews.rejected, (state, action) => {
+        state.errorMessage = action.payload.messages
       })
       .addCase(updateArchived.fulfilled, (state, action) => {
         const news = state.news.map((element) => {

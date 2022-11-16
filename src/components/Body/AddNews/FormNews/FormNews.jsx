@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { createNews } from '../../../../features/news/newsSlice'
+import { createNews} from '../../../../features/news/newsSlice'
 import { useNavigate } from "react-router-dom";
 import './FormNews.css'
 import { Input, Button, Select, Form, Upload } from "antd";
@@ -10,7 +10,7 @@ const { TextArea } = Input;
 function FormNews({setIsModalOpen}) {
 
     const dispatch = useDispatch()
-    const { categories } = useSelector( state => state.news )
+    const { categories, errorMessage } = useSelector( state => state.news )
 
     const navigate = useNavigate();
 
@@ -21,20 +21,20 @@ function FormNews({setIsModalOpen}) {
     const [form] = Form.useForm();
 
     const onFinish = async (values) => {
-      const {author, category, content, description, link, title} = values
+        const {author, category, content, description, link, title} = values
         const formData = new FormData();
         if (image[0]) formData.set('imageNews', image[0]);
-        formData.set('title', title)
+        if (title !== undefined) formData.set('title', title)
         formData.set('link', `http://${link}`)
         formData.set('author', [author])
         formData.set('category', category)
-        formData.set('description', description)
-        formData.set('content', content)
+        if (description !== undefined) formData.set('description', description)
+        if (content !== undefined) formData.set('content', content)
         formData.set('date', `${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDay()} ${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`)
         keywords.forEach(element => formData.append('keywords', element))
         await dispatch(createNews(formData))
-        await setImage([]);
-        await setKeywords([]);
+        if(document.querySelector(".errors").innerHTML) return
+        setKeywords([]);
         navigate("/news")
         setIsModalOpen(false)
         form.resetFields();
@@ -49,7 +49,7 @@ function FormNews({setIsModalOpen}) {
     const beforeUpload = (file) => {
       setImage([file])
       return false; 
-    }
+    } 
 
   return (
     <Form onFinish={onFinish} form={form}>
@@ -57,7 +57,7 @@ function FormNews({setIsModalOpen}) {
         <Form.Item
         label="Title"
         name="title"
-        rules={[{ required: true, message: 'Please enter a title!' }]}
+        // rules={[{ required: true, message: 'Please enter a title!' }]}
         >
         <Input type="text"/>
         </Form.Item>
@@ -86,14 +86,14 @@ function FormNews({setIsModalOpen}) {
         <Form.Item
         label="Description"
         name="description"
-        rules={[{ required: true, message: 'Please enter a description!' }]}
+        // rules={[{ required: true, message: 'Please enter a description!' }]}
         >
         <Input type="text"/>
         </Form.Item>
         <Form.Item
         label="Content"
         name="content"
-        rules={[{ required: true, message: 'Please enter a content!' }]}
+        // rules={[{ required: true, message: 'Please enter a content!' }]}
         >
         <TextArea style={{ height: 120, resize: 'none' }}/>
         </Form.Item>
@@ -120,6 +120,7 @@ function FormNews({setIsModalOpen}) {
 
         <div className='elementForm'>
         <Button type="primary" htmlType="submit">Submit</Button>
+        <span className='errors'>{errorMessage}</span>
         </div>
       </Form>
   )

@@ -34,7 +34,7 @@ function OneNews({_id, title, link, category, keywords, author, image_url, updat
           <h4>Author: {author}</h4>
           </div>
           {currentLocation !== '/archived' ? <p><i>{updatedAt.slice(0,10)}</i></p> : null}
-          {archiveDate ? (<p>Archived date: {archiveDate}</p>) : null}
+          {archiveDate ? (<p>Archived date: {archiveDate.slice(0,10)}</p>) : null}
           <div className="card_atribbutes animate__animated animate__fadeIn">
           {
             keywords ? keywords.map((elem,idx) => (

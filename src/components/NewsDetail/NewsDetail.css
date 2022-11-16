@@ -1,0 +1,43 @@
+.detail_card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1em;
+    margin-bottom: 5em;
+    padding: 0 5em;
+    text-align: center;
+    gap: 1.5em;
+    width: 100%;
+   
+}
+
+.detail_card img{
+    width: 45%;
+}
+
+.detail_card button {
+    width: 10em;
+    background-color: #111344;
+    padding: 1em;
+    margin-top: 0.5em;
+    font-size: 1.2em;
+    border: 2px solid #111344;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    color:white;
+}
+
+.detail_card button:hover {
+    background-color: #DAE0F2; 
+    border: 2px solid #DAE0F2; 
+    color:#222;
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.components {
+    display: flex;
+    gap: 1em;
+}

@@ -43,7 +43,6 @@ function FormNews({setIsModalOpen}) {
     const addKeyword = () => {
         const oneKeyword = document.getElementById("keywords")
         setKeywords(pre => [...pre, oneKeyword.value ])
-        setInputKeywords("")
     } 
 
     const beforeUpload = (file) => {
@@ -57,7 +56,7 @@ function FormNews({setIsModalOpen}) {
         <Form.Item
         label="Title"
         name="title"
-        // rules={[{ required: true, message: 'Please enter a title!' }]}
+        rules={[{ required: true, message: 'Please enter a title!' }]}
         >
         <Input type="text"/>
         </Form.Item>
@@ -86,14 +85,14 @@ function FormNews({setIsModalOpen}) {
         <Form.Item
         label="Description"
         name="description"
-        // rules={[{ required: true, message: 'Please enter a description!' }]}
+        rules={[{ required: true, message: 'Please enter a description!' }]}
         >
         <Input type="text"/>
         </Form.Item>
         <Form.Item
         label="Content"
         name="content"
-        // rules={[{ required: true, message: 'Please enter a content!' }]}
+        rules={[{ required: true, message: 'Please enter a content!' }]}
         >
         <TextArea style={{ height: 120, resize: 'none' }}/>
         </Form.Item>

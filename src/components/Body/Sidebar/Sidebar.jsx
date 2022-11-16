@@ -9,6 +9,9 @@ function Sidebar() {
   const [dataCategory, setDataCategory] = useState("allcategories");
   const [dataTitle, setDataTitle] = useState("")
 
+  const dispatch = useDispatch()
+  const { categories } = useSelector( state => state.news )
+
   const onSearch = () => {
     const dataSearch = {dataTitle, dataCategory}
     dispatch(searchByTitle(dataSearch))
@@ -19,9 +22,6 @@ function Sidebar() {
     setDataCategory(e.target.value)
     dispatch(getNewsByCategory(e.target.value))
   };
-
-  const dispatch = useDispatch()
-  const { categories } = useSelector( state => state.news )
 
   useEffect(() => {
     dispatch(getCategories())

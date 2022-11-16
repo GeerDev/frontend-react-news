@@ -1,6 +1,6 @@
 import { Button, Modal } from 'antd';
 import { useState } from 'react';
-import Form from './Form/Form'
+import FormNews from './FormNews/FormNews'
 
 function AddNews() {
 
@@ -9,13 +9,17 @@ function AddNews() {
     setIsModalOpen(true);
   };
 
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <>
       <Button type="primary" onClick={showModal}>
         Add a News
       </Button>
-      <Modal title="Add one news" open={isModalOpen} closable={false} footer={null}>
-        <Form setIsModalOpen={setIsModalOpen}/>
+      <Modal title="Add one news" open={isModalOpen} onCancel={handleCancel} footer={null} destroyOnClose={true}>
+        <FormNews setIsModalOpen={setIsModalOpen}/>
       </Modal>
     </>
   )

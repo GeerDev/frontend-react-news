@@ -1,11 +1,10 @@
 import './Form.css'
 import { Input, Button, Select} from "antd";
-const {  Option } = Select
 const { TextArea } = Input;
 
 function Form({setIsModalOpen}) {
 
-    console.log(`${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDay()} ${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`)
+    const date = `${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDay()} ${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`
 
     let prueba
 

@@ -1,39 +1,48 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-// import { getCategories } from '../../../features/news/newsSlice'
+import { getCategories, getNewsByCategory, searchByTitle } from '../../../features/news/newsSlice'
 import { Radio, Input } from 'antd';
 const { Search } = Input
 
 function Sidebar() {
 
-  const onSearch = (value) => console.log(value);
+  const [dataCategory, setDataCategory] = useState("allcategories");
+  const [dataTitle, setDataTitle] = useState("")
+
+  const onSearch = () => {
+    const dataSearch = {dataTitle, dataCategory}
+    dispatch(searchByTitle(dataSearch))
+    setDataTitle("")
+  };
 
   const onChange = (e) => {
-    console.log(`radio checked:${e.target.value}`);
+    setDataCategory(e.target.value)
+    dispatch(getNewsByCategory(e.target.value))
   };
 
   const dispatch = useDispatch()
   const { categories } = useSelector( state => state.news )
 
   useEffect(() => {
-    // dispatch(getCategories())
+    dispatch(getCategories())
   },[])
+
+const mapCategories = categories.map((element,i) => (<Radio.Button key={i} value={element}>{element.charAt(0).toUpperCase() + element.slice(1)}</Radio.Button>))
 
   return (
     <>
     <Search
       placeholder="input search news by title"
       onSearch={onSearch}
+      value={dataTitle}
+      onChange={(e) => setDataTitle(e.target.value)}
       style={{
         width: 300,
       }}
     />
   <Radio.Group onChange={onChange} defaultValue="allcategories">
     <Radio.Button value="allcategories">AllCategories</Radio.Button>
-    <Radio.Button value="a">Hangzhou</Radio.Button>
-    <Radio.Button value="b">Shanghai</Radio.Button>
-    <Radio.Button value="c">Beijing</Radio.Button>
-    <Radio.Button value="d">Chengdu</Radio.Button>
+      {mapCategories}
   </Radio.Group>
   </>
   )

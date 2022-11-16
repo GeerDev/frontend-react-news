@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { createNews } from '../../../../features/news/newsSlice'
 import { useNavigate } from "react-router-dom";
 import './FormNews.css'
-import { Input, Button, Select, Form, Upload} from "antd";
+import { Input, Button, Select, Form, Upload } from "antd";
 import { PlusOutlined } from '@ant-design/icons';
 const { TextArea } = Input;
 

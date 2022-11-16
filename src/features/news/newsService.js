@@ -30,17 +30,17 @@ const searchByTitle = async (dataSearch) => {
 
 const createNews = async (dataForm) => {
     const res = await axios.post(API_URL, dataForm);
-    return res.data.newNews;
+    return res.data;
 };
 
 const updateArchived = async (id_new) => {
     const res = await axios.put(API_URL + `/id/${id_new}`);
-    return res.data.updateNews;
+    return res.data;
 };
 
 const deleteOneNews = async (id_new) => {
     const res = await axios.delete(API_URL + `/id/${id_new}`);
-    return res.data.deleteNews;
+    return res.data;
 };
 
 const postService = {

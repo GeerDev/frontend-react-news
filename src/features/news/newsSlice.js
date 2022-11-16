@@ -4,13 +4,18 @@ import newsService from "./newsService";
 const initialState = {
   news: [],
   oneNews: {},
-  categories: []
+  categories: [],
+  message: ""
 };
 
 export const newsSlice = createSlice({
   name: "news",
   initialState,
-  reducers: {},
+  reducers: {
+      reset: (state) => {
+        state.message = ""
+        }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getNews.fulfilled, (state, action) => {
@@ -29,19 +34,22 @@ export const newsSlice = createSlice({
         state.news = action.payload
       })
       .addCase(createNews.fulfilled, (state, action) => {
-        state.news = [action.payload, ...state.news]
+        state.news = [action.payload.newNews, ...state.news]
+        state.message = action.payload.info
       })
       .addCase(updateArchived.fulfilled, (state, action) => {
         const news = state.news.map((element) => {
-          if (element._id === action.payload._id) {
-            element = action.payload;
+          if (element._id === action.payload.updateNews._id) {
+            element = action.payload.updateNews;
           }
           return element
       })
       state.news = news
+      state.message = action.payload.info
       })
       .addCase(deleteOneNews.fulfilled, (state, action) => {
-        state.news = state.news.filter(oneNews => oneNews._id !== action.payload._id)
+        state.news = state.news.filter(oneNews => oneNews._id !== action.payload.deleteNews._id)
+        state.message = action.payload.info
       })
   }
 });
@@ -117,5 +125,7 @@ export const deleteOneNews = createAsyncThunk("news/deleteOneNews", async (id_ne
       return thunkAPI.rejectWithValue(message);
     }
   });
+
+export const { reset } = newsSlice.actions;
 
 export default newsSlice.reducer;

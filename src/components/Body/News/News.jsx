@@ -1,13 +1,14 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom';
-import { getNews } from '../../../features/news/newsSlice.js'
+import { getNews, reset } from '../../../features/news/newsSlice.js'
+import { notification} from "antd";
 import OneNews from './OneNews/OneNews'
 
 function News({ archived }) {
 
 const dispatch = useDispatch()
-const { news } = useSelector( state => state.news )
+const { news, message } = useSelector( state => state.news )
 
 let location = useLocation()
 let currentLocation = location.pathname
@@ -15,6 +16,13 @@ let currentLocation = location.pathname
 useEffect(() => {
   dispatch(getNews())
 },[currentLocation])
+
+useEffect(() => {
+  if(message) {
+    notification.success({ message: "Let's go", description: message });
+    dispatch(reset())
+  }
+}, [message]);
 
 const newsArchived = news.filter(element => element.archived)
 

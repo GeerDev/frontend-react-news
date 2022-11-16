@@ -23,7 +23,7 @@ function OneNews({_id, title, link, category, keywords, author, image_url, updat
   let currentLocation = location.pathname
 
   return (
-    <div className="card">
+    <div className="card animate__animated animate__fadeIn">
         <img src={image_url} alt={image_url}/>
         <div className="card_content">
         <Link to={`/newsdetail/${_id}`}>
@@ -35,7 +35,7 @@ function OneNews({_id, title, link, category, keywords, author, image_url, updat
           </div>
           {currentLocation !== '/archived' ? <p><i>{updatedAt.slice(0,10)}</i></p> : null}
           {archiveDate ? (<p>Archived date: {archiveDate}</p>) : null}
-          <div className="card_atribbutes">
+          <div className="card_atribbutes animate__animated animate__fadeIn">
           {
             keywords ? keywords.map((elem,idx) => (
                 <span key={idx} className="card_element">#{elem}</span>

@@ -23,6 +23,10 @@ Instalar las depedencias necesarias:
 
 > npm i
 
+Rellenar las variables necesarias en el archivo .env.example para iniciar el proyecto, despues cambiarle el nombre a .env:
+
+> >   -  URL desde la cual quieres obtener los recursos para la aplicación (tu back-end o llamada a una api externa), REACT_APP_URL
+
 Ejecutar el script para iniciar el proyecto:
 
 > npm start

@@ -13,3 +13,9 @@ root.render(
     </Provider>
   </React.StrictMode>
 );
+
+// Testing in Cypress
+if (window.Cypress) {
+  window.store = store;
+ }
+ 

@@ -71,20 +71,9 @@ Pantalla cuando no se encuentra la ruta en el dominio:
 Se han implementado una serie de tests con Cypress que comprueban la funcionalidad básica:
 
 - Que se abra la página y se navegue hacia la ruta donde se encuentran todas las noticias
-
-![Gif Navegacion](./images_github/Navegacion.gif)
-
 - Añadir una noticia
-
-![Gif Añadir](./images_github/Añadir.gif)
-
 - Archivar una noticia y comprobar que esta donde toca y en el orden que toca
-
-![Gif Archivar](./images_github/Archivar.gif)
-
 - Elminar una noticia
-
-![Gif Eliminar](./images_github/Eliminar.gif)
 
 ## Despliegue en Amazon Web Services 🏗️
 

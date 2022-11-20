@@ -45,7 +45,7 @@ function OneNews({_id, title, link, category, keywords, author, image_url, updat
           </div>
           <div className="card_buttons">
           <button onClick={()=> externalLink(link) }>Go to the website</button>
-          {archived ? <button onClick={() => deleteNews(_id)}>Delete</button> : <button onClick={() => archiveNews(_id)}>Archive</button>}
+          {archived ? <button onClick={() => deleteNews(_id)} className='deleteButton'>Delete</button> : <button onClick={() => archiveNews(_id)} className='archiveButton'>Archive</button>}
           </div>
         </div>
       </div>

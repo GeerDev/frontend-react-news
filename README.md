@@ -66,6 +66,34 @@ Pantalla cuando no se encuentra la ruta en el dominio:
 
 ![Foto Notfound](./images_github/Notfound.png)
 
+## Testing con Cypress 📑
+
+Se han implementado una serie de tests con Cypress que comprueban la funcionalidad básica:
+
+- Que se abra la página y se navegue hacia la ruta donde se encuentran todas las noticias
+
+![Gif Navegacion](./images_github/Navegacion.gif)
+
+- Añadir una noticia
+
+![Gif Añadir](./images_github/Añadir.gif)
+
+- Archivar una noticia y comprobar que esta donde toca y en el orden que toca
+
+![Gif Archivar](./images_github/Archivar.gif)
+
+- Elminar una noticia
+
+![Gif Eliminar](./images_github/Eliminar.gif)
+
+## Despliegue en Amazon Web Services 🏗️
+
+Nuestro front se encuentra desplegado en AWS utilizando su servicio de AWS Amplify, además esta conectada con el back desplegado en Railway, teniendo el stack completo desplegado:
+
+https://main.d292gwz6zxcqnx.amplifyapp.com/
+
+![Foto AWS](./images_github/AWS.png)
+
 ## Organización a la hora de trabajar en este proyecto 📌
 El proyecto consta de dos ramas: main y develop, las distintas funcionalidades del proyecto se han implementado en distintas ramas que posteriormente se han fusionado con la rama develop que es la encargada de actualizar todo el trabajo de desarrollo. Finalmente con una versión estable de la rama develop la fusionamos con la rama main, la encargada de mostrar nuestro Front-End en producción.
 
